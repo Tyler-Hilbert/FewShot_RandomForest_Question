@@ -24,6 +24,9 @@ def check(label1, label2):
         # F1 Score
         y_pred = rf.predict(X_test)
         f1_scores_3.append(metrics.f1_score(y_test, y_pred, pos_label=label1))
+        # For debugging
+        np.savetxt(f'labels/ytrain_labels_{label1}_3-{label2}_{i}.txt', y_train, fmt='%s')
+        np.savetxt(f'labels/ytest_labels_{label1}_3-{label2}_{i}.txt', y_test, fmt='%s')
 
         # 50 training examples
         # Test train split
@@ -34,6 +37,9 @@ def check(label1, label2):
         # F1 Score
         y_pred = rf.predict(X_test)
         f1_scores_50.append(metrics.f1_score(y_test, y_pred, pos_label=label1))
+        # For debugging
+        np.savetxt(f'labels/ytrain_labels_{label1}_50-{label2}_{i}.txt', y_train, fmt='%s')
+        np.savetxt(f'labels/ytest_labels_{label1}_50-{label2}_{i}.txt', y_test, fmt='%s')
 
     title = f'constant {label1} examples and increasing {label2} examples'
     plt.title(title)
